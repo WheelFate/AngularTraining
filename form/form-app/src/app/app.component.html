@@ -1,0 +1,82 @@
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 200vh;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  h1{
+    text-align: center;
+    padding:4px;
+    margin-top:4px;
+    margin-bottom: 4px;
+  }
+  select{
+    width:100%;
+  }
+  </style>
+  <h1>{{title}}</h1>
+<mat-form-field>
+  <table>
+    <tr>
+      <th>Project Id</th>
+      <th>Project Name</th>
+      <th>Project Type</th>
+      <th>Add Project</th>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="fill">
+        <mat-label>Project Id</mat-label>
+        <input matInput #newProject>
+      </mat-form-field>
+    </td>
+      <td>
+        <mat-form-field appearance="fill">
+          <mat-label>Project Name</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill">
+          <mat-label>Project Type</mat-label>
+          <select>
+            <option>a</option>
+            <option>b</option>
+            <option>c</option>
+            <option>d</option>
+          </select>
+        </mat-form-field>
+      </td>
+      <td>
+        <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+          <mat-icon (click)="addProject(newProject.value)">plus_one</mat-icon>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th>Project id</th>
+      <th>Project Name</th>
+      <th>Project Type</th>
+    </tr>
+    <tr *ngFor="let project of Projects">
+      <td>{{project.id}}</td>
+      <td>{{project.name}}</td>
+      <td>{{project.type}}</td>
+      <td>
+        <button mat-button color="accent" (click)="DeleteProject(project)">Delete Project</button>
+      </td>
+    </tr>
+  </table>
+</mat-form-field>
+<router-outlet></router-outlet>

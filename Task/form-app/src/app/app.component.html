@@ -1,0 +1,73 @@
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 200vh;
+  }
+  
+  th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+  h1{
+    text-align: center;
+    padding:4px;
+    margin-top:4px;
+    margin-bottom: 4px;
+  }
+  </style>
+  <h1>{{title}}</h1>
+<mat-form-field>
+  <table>
+    <tr>
+      <th>Task Id</th>
+      <th>Task Name</th>
+      <th>Task Type</th>
+      <th>Add Task</th>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="fill">
+        <mat-label>Task Id</mat-label>
+        <input matInput #newProject>
+      </mat-form-field>
+    </td>
+      <td>
+        <mat-form-field appearance="fill">
+          <mat-label>Task Name</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="fill">
+          <mat-label>Task Type</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </td>
+      <td>
+        <button mat-button color="primary" (click)="addProject(newProject.value)">Add</button>
+      </td>
+    </tr>
+    <tr>
+      <th>Task id</th>
+      <th>Task Name</th>
+      <th>Task Type</th>
+    </tr>
+    <tr *ngFor="let project of Projects">
+      <td>{{project.id}}</td>
+      <td>{{project.name}}</td>
+      <td>{{project.type}}</td>
+      <td>
+        <button mat-button color="accent" (click)="DeleteProject(project)">Delete Task</button>
+      </td>
+    </tr>
+  </table>
+</mat-form-field>
+<router-outlet></router-outlet>
